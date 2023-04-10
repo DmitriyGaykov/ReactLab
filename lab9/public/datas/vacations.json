@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "img":"img1.png",
+        "company":"Интернет Люди",
+        "name":"Front-end Разработчик",
+        "city":"Москва",
+        "lans": [
+            "JQuery", "JavaScript", "React", "Vue"
+        ],
+        "date": "32.13.2024"
+    },
+    {
+        "id": 2,
+        "img":"img2.png",
+        "company":"GOOD CALL DEVELOPMENT",
+        "name":"React Developer (Middle/Senior)",
+        "city":"Москва",
+        "lans": [
+            "React", "Git", "Vue", "JavaScript", "Flexbox", "HTML5", "SASS", "CSS3"
+        ],
+        "date": "32.13.2024"
+    },
+    {
+        "id": 3,
+        "img":"img3.png",
+        "company":"Winfinity",
+        "name":"Frontend developer (React)",
+        "city":"Москва",
+        "lans": [
+            "React", "JavaScript", "Flexbox", "HTML5", "SASS", "CSS3"
+        ],
+        "date": "32.13.2024"
+    },
+    {
+        "id": 4,
+        "img":"img2.png",
+        "company":"ITechArt",
+        "name":"Frontend developer (React)",
+        "city":"Москва",
+        "lans": [
+            "React", "JavaScript", "CSS3"
+        ],
+        "date": "32.13.2024"
+    },
+    {
+        "id": 5,
+        "img":"img1.png",
+        "company":"Winfinity",
+        "name":"Frontend Developer (Vue.js)",
+        "city":"Москва",
+        "lans": [
+            "Vue", "JavaScript", "HTML5", "SASS", "CSS3"
+        ],
+        "date": "32.13.2024"
+    }
+]
