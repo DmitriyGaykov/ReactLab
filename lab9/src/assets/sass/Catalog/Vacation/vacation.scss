@@ -1,15 +1,44 @@
 @import './../../mixins.scss';
 .vacation {
+    padding: 3px;
     max-width: 460px;
+    min-width: 380px;
     width: 100%;
     @include flexer(15px, row, flex-start);
     padding: 20px;
+    position: relative;
+    @media (max-width: 580px) {
+        flex-wrap: wrap;
+    }
+    &::before {
+        content: "";
+        width: 20px;
+        transition: all .4s ease;
+        background: #fff;
+        border-radius: 10px 0px 0px 10px;
+        position: absolute;
+        height: 100%;
+        left: -10px;
+    }
+    &.selected-vac {
+        &::before {
+            content: "";
+            width: 20px;
+            background: #0070FB;
+            border-radius: 10px 0px 0px 10px;
+            position: absolute;
+            height: 100%;
+            left: -10px;
+        }
+    }
     .logo {
         width: 68px;
     }
     .info {
         @include flexer(5px, column, center, flex-start);
-        width: 280px;
+        flex-wrap: wrap;
+        max-width: 280px;
+        width: 100%;
         .company {
             font-style: normal;
             font-weight: 700;
@@ -53,6 +82,11 @@
                     fill: #ff000077;
                 }
             }
+            @media (max-width: 580px) {
+                position: absolute;
+                top: 0%;
+                right: 0%;
+            }
         }
         .date {
             font-style: normal;
@@ -64,6 +98,9 @@
             align-items: center;
             text-align: center;
             color: #A1AEB9;
+            @media (max-width: 580px) {
+                display: none;
+            }
         }
     }
 }

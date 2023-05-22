@@ -23,6 +23,9 @@
         top: 100%;
         padding: 28px 0;
         position: absolute;
+        z-index: 100;
+        background-color: white;
+        border-radius: 1px;
         .variable {
             @include flexer(17px, row, flex-start);
             cursor: pointer;
@@ -43,8 +46,48 @@
     }
 }
 
+body {
+    @media (max-width: 1000px) {
+        .filter-catalog {
+            align-self: center;
+            gap: 38px;
+            .filter,
+            .filterButton {
+                width: 130px;
+                @media (max-width: 500px) {
+                    width: 90px;
+                    &.filterButton {
+                        width: 70px;
+                    }
+                }
+            }
+            .searchButton {
+                transform: scale(.7)
+            }
+        }
+    }
+}
+
+// <div className="hidden-wrapper">
+//                 { hiddenFiltres?.map(el => 
+//                     <Filter img={ el.img }
+//                             variables={ el.variables }
+//                             key = { i++ }
+//                 />) }
+//             </div>
 .filter-catalog {
     @include padding;
     @include flexer(10px, row, space-between);
     background: white;
+    position: relative;
+    .hidden-wrapper {
+        @include flexer(40px, column);
+        width: 100%;
+        padding: 4px;
+        z-index: 100;
+        background-color: #fff;
+        position: absolute;
+        top: 70px;
+        right: 0;
+    }
 }

@@ -1,9 +1,12 @@
 import ITag from "../ITag";
 import './lanTag.scss';
 
-const LanTag = ({ text } : ITag) => {
+const LanTag = ({ text, onClick } : ITag) => {
+
+    onClick ??= () => {};
+
     return (
-        <div className="tag">
+        <div onClick={() => onClick()} className="tag">
             { text ?? "" }
         </div>
         );

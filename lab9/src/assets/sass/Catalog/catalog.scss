@@ -1,14 +1,7 @@
-// <div className="catalog">
-//             { vacs?.map(el => <Vacation id={el.id}
-//                                        name={el.name}
-//                                        city={el.city}
-//                                        lans={el.lans}
-//                                        img={el.img}
-//                                        date={el.date}
-//                                        company={el.company}/>) }
-//         </div>
 @import './../mixins.scss';
 .catalog {
     @include flexer(15px, column, center, flex-start);
-    @include padding;
+    @media (max-width: 1000px) {
+        justify-self: center;
+    }
 }

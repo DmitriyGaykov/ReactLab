@@ -3,31 +3,62 @@ import IVacation from "../../../../assets/models/IVacation";
 import LanTag from "../../../Tags/LanTag/LanTag";
 import { ReactComponent as Like } from './../../../../assets/image/heart.svg'
 import './../../../../assets/sass/Catalog/Vacation/vacation.scss'
+import { connect } from "react-redux";
+import { addVacation, remVacation } from "../../../../redux/actions/favActions";
+import { setCurrent } from "../../../../redux/actions/vacsAction";
+import { setLan } from "../../../../redux/actions/lanAction";
 
-const Vacation = (vac : IVacation) => {
-    const [like, setLike] = useState(false);
+const Vacation = ( {vac, dispatch } : { vac : IVacation, dispatch ?: any } ) => {
+    let i  = 0;
+
+    const [like, setLike] = useState<boolean>();
+    const [isSelected, setIsSelected] = useState<boolean>(vac.isSelected as boolean);
 
     useEffect(() => {
-        
-    }, [like]);
+        setLike(vac?.isLiked);
+        setIsSelected(vac?.isSelected as boolean)
+    }, [vac])
+
+    const onVac = () => {
+        dispatch(setCurrent(vac));
+        setCurrent(vac)
+    }
+
+    const onLike = () => {
+        vac.isLiked = !vac.isLiked;
+        setLike(vac.isLiked)
+        const func = vac.isLiked ? addVacation : remVacation;
+        dispatch(func(vac));
+    };
+
+    const onLan = (lan : string) => {
+        dispatch(setLan(lan));
+    }
 
     return (
-        <section className="vacation"
-                 id={ vac.id.toString() }>
-            <img src={ vac.img } alt="" className="logo" />
+        <section className={isSelected ? "selected-vac vacation" : "vacation"}
+                 id={ vac.id?.toString() }
+                 >
+            <img src={ vac.img } alt="" className="logo" onClick={() => onVac()} />
 
             <div className="info">
-                <div className="company">{ vac.city }</div>
+                <div className="company">{ vac.company }</div>
                 <div className="name">{ vac.name }</div>
                 <div className="city">{ vac.city }</div>
                 <div className="lans">
-                    { vac.lans.map(el => <LanTag text={ el }/>) }
+                    { 
+                        vac.lans?.map(el => <LanTag 
+                                                text={ el } 
+                                                onClick={() => onLan(el)} 
+                                                key={ i++ }/>) 
+                    }
                 </div>
             </div>
 
             <div className="like-and-date">
                 <Like className={ like ? "like like-active" : "like"}
-                      onClick={() => setLike(!like)}/>
+                      onClick={() => onLike()}
+                      key={ i++ }/>
                 <div className="date">
                     { vac.date }
                 </div>
@@ -37,4 +68,4 @@ const Vacation = (vac : IVacation) => {
         )
 }
 
-export default Vacation;
+export default connect()(Vacation);

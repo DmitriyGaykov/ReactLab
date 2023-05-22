@@ -1,14 +1,20 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import IFilter from "./IFilter";
-import { DATACONTEXT } from "../../../App";
+import { setFilter as addFilter } from "../../../redux/actions/filtAction";
+import { connect } from "react-redux";
 
-const Filter = ({ img, variables } : IFilter) => {
+const Filter = ({ img, variables, dispatch } : IFilter) => {
     const [selectedFilter, setFilter] = useState(variables.at(0));
     const [showVariables, setShowVariables] = useState(false);
-    const refVacs = useRef(useContext(DATACONTEXT)?.vacations);
 
     const key = Math.random() % 2_000_000_000;
     let i = 0;
+
+    const onVariable = (filter : string) => {
+        console.log(dispatch)
+        setFilter(filter);
+        dispatch(addFilter(filter));
+    }
 
     return (
         <section className="filter"
@@ -27,7 +33,7 @@ const Filter = ({ img, variables } : IFilter) => {
                         <input type="radio" 
                                id={ `variable${key + i}` }
                                name={ `variable${key}` }
-                               onClick={ () => setFilter(el) }/>
+                               onClick={ () => onVariable(el) }/>
                         <label className="text"
                                htmlFor={ `variable${key + i++}` }>
                             { el }
@@ -41,4 +47,4 @@ const Filter = ({ img, variables } : IFilter) => {
         );
 }
 
-export default Filter;
+export default connect()(Filter);

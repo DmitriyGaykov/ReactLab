@@ -1,7 +1,7 @@
 @import './mixins.scss';
 .site-header {
     @include flexer(130px, row, flex-start);
-    padding: 0 $paddingFull;
+    @include padding;
     min-height: 74px;
     .logo {
         max-width: 158px;
@@ -27,13 +27,11 @@
             }
         }
     }
-    @media (max-width: 1000px) and (min-width: 300px) {
+    @media (max-width: 1000px) and (min-width: 350px) {
         @include flexer(10px, row, space-between);
-        padding: 0 $paddingTablet;
     }
-    @media (max-width: 300px) {
+    @media (max-width: 350px) {
         @include flexer(10px, row, space-between);
-        padding: 0 $paddingMobile;
     }
 }
 

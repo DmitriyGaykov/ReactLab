@@ -1,17 +1,20 @@
 import IVacation from "../../../assets/models/IVacation";
 import Vacation from "./Vacation/Vacation";
 import './../../../assets/sass/Catalog/catalog.scss';
+import {  useEffect, useState } from "react";
 
-const Catalog = ({ vacs } : { vacs : IVacation[] } ) => {
-    return (
+const Catalog = ({ vacs, setCurrent } : { vacs : IVacation[], setCurrent : any } ) => {
+    const [vacations, setVacations] = useState<IVacation[] | undefined>(vacs);
+
+    useEffect(() => {
+        setVacations(vacs);
+    }, [vacs]);
+
+return (
         <div className="catalog">
-            { vacs?.map(el => <Vacation id={el.id}
-                                       name={el.name}
-                                       city={el.city}
-                                       lans={el.lans}
-                                       img={el.img}
-                                       date={el.date}
-                                       company={el.company}/>) }
+            { vacations?.map(el => <Vacation vac={ el } 
+                                             key={ el.id }/>,
+                                             ) }
         </div>
         )
 }

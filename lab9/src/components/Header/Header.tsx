@@ -40,6 +40,8 @@ const Header = () => {
         setBurger(window.innerWidth < 650);
     };
 
+    let i = 0;
+
     return (
         <header className="site-header">
 
@@ -52,7 +54,8 @@ const Header = () => {
                 { points.map(el => <MenuLink text={ el.text }
                                              href={ el.href }
                                              active={ el.active }
-                                             onClick={ () => setSelectedPoint(el) }/>) }
+                                             onClick={ () => setSelectedPoint(el) }
+                                             key={el.text}/>) }
             </>
             : 
             <>
@@ -63,15 +66,14 @@ const Header = () => {
                 <span></span>
               </div>
 
-              { burger ? 
+              { burger &&
               <div className={ burgerMenu ? "burger-menu burger-menu-active" : "burger-menu" }>
                 { points.map(el => <MenuLink text={ el.text }
                                              href={ el.href }
+                                             key={el.text}
                                              active={ el.active }
                                              onClick={ () => setSelectedPoint(el) }/>)  }
               </div>
-              :
-              <></>
               }
             </>
             }

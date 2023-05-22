@@ -13,7 +13,7 @@ $paddingMobile: 10px;
     padding: 0 $paddingFull;
     @media (max-width: 1000px) {
         padding: 0 $paddingTablet;
-        @media (max-width: 300px) {
+        @media (max-width: 500px) {
             padding: 0 $paddingMobile;
         }
     }

@@ -4,4 +4,5 @@ import IFilter from "./Filters/IFilter";
 export default interface IPage {
     filters?: IFilter[];
     vacations?: IVacation[];
+    dispatch?: any;
 }
